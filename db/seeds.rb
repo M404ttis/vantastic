@@ -33,6 +33,7 @@ puts "Start seeding van..."
     brand: faker_brand,
     model: Faker::Vehicle.model(make_of_model: faker_brand),
     description: Faker::Lorem.paragraphs(number: 1),
+    location: ["Berlin", "Essen", "München", "Hamburg", "Düsseldorf", "Freiburg", "Leipzig", "Frankfurt" ].sample,
     photo: Faker::LoremFlickr.image(size: "50x60", search_terms: [faker_brand]),
     price_per_day: rand(20..1000),
     user: User.last
