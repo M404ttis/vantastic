@@ -5,14 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
+Van.destroy_all
 User.destroy_all
 
 puts "Start seeding user..."
 
-100.times do
+10.times do
   User.create!(
-  username: Faker::Name.name,
+  email: Faker::Internet.email,
+  password: Faker::Internet.password,
+  username: Faker::Internet.username(specifier: 3..15),
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name
     )
@@ -22,7 +26,7 @@ puts "End seeding user, #{User.count} created ..."
 
 puts "Start seeding van..."
 
-30.times do
+10.times do
   faker_brand = Faker::Vehicle.make
   Van.create!(
     title: Faker::Marketing.buzzwords,
@@ -31,7 +35,7 @@ puts "Start seeding van..."
     description: Faker::Lorem.paragraphs(number: 1),
     photo: Faker::LoremFlickr.image(size: "50x60", search_terms: [faker_brand]),
     price_per_day: rand(20..1000),
-    user: User.all.sample
+    user: User.last
     )
 end
 
