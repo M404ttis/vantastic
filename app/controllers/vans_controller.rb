@@ -4,26 +4,26 @@ class VansController < ApplicationController
   end
 
   def new
-    authorize @van
+    # authorize @van
   end
   
   def create
-    authorize @van
+    # authorize @van
   end
   
   def update
-    authorize @van
+    # authorize @van
   end
   
   def edit
-    authorize @van
+    # authorize @van
   end
   
   def destroy
-    authorize @van
+    # authorize @van
   end
   
   def show
-    authorize @van
+    # authorize @van
   end
 end
