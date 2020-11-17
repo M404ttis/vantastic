@@ -26,7 +26,8 @@ puts "End seeding user, #{User.count} created ..."
 
 puts "Start seeding van..."
 
-10.times do
+pic_ids = ["https://images.unsplash.com/photo-1497245574213-9d6220ccbf72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80", "https://images.unsplash.com/photo-1502113040754-9e3e85618a00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=1050&q=80", "https://images.unsplash.com/photo-1541449540793-66e313267a72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80", "https://images.unsplash.com/photo-1531247370505-ce9e32a056a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80", "https://images.unsplash.com/photo-1601285462028-111ed137177e?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80", "https://images.unsplash.com/photo-1516916030000-63fd85bd8b29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"]
+pic_ids.each do |pic|
   faker_brand = Faker::Vehicle.make
   Van.create!(
     title: Faker::Marketing.buzzwords,
@@ -34,9 +35,9 @@ puts "Start seeding van..."
     model: Faker::Vehicle.model(make_of_model: faker_brand),
     description: Faker::Lorem.paragraphs(number: 1),
     location: ["Berlin", "Essen", "München", "Hamburg", "Düsseldorf", "Freiburg", "Leipzig", "Frankfurt" ].sample,
-    photo: Faker::LoremFlickr.image(size: "50x60", search_terms: [faker_brand]),
     price_per_day: rand(20..1000),
-    user: User.last
+    user: User.all.sample,
+    photo: pic,
     )
 end
 

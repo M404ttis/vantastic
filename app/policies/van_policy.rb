@@ -4,4 +4,8 @@ class VanPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def new?
+    true
+  end
 end
