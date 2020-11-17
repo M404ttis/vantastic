@@ -1,0 +1,18 @@
+.btn-orange {
+  background-color: $bright-orange;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: $white;
+  padding: 8px 24px;
+  font-weight: bold;
+  opacity: 1;
+  transition: background .3s ease;
+  height: 60px;
+  width: 180px;
+
+}
+
+.btn-orange:hover {
+  background-color: $fade-orange;
+  color: $white;
+}
