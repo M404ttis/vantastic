@@ -1,7 +1,11 @@
 class VansController < ApplicationController
 
   def index
-    @vans = Van.all
+    if params[:query].present?
+    @vans = Van.where(location: params[:query])
+    else
+      @vans = Van.all
+    end
   end
 
   def new
