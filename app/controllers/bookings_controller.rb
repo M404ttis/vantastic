@@ -3,26 +3,26 @@ class BookingsController < ApplicationController
 
   
   def show
-    authorize @booking
+    # authorize @booking
   end
   
   def new
-    authorize @booking
+    # authorize @booking
   end
   
   def create
-    authorize @booking
+    # authorize @booking
   end
   
   def edit
-    authorize @booking
+    # authorize @booking
   end
   
   def update
-    authorize @booking
+    # authorize @booking
   end
   
   def destroy
-    authorize @booking
+    # authorize @booking
   end
 end
