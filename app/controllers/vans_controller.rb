@@ -1,5 +1,6 @@
 class VansController < ApplicationController
   def index
+    @vans = Van.all #show random vans to get inspired
   end
 
   def new
