@@ -1,4 +1,5 @@
 class VansController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index ]
   def index
     if params[:query].present?
     @vans = Van.where(location: params[:query])
@@ -9,7 +10,8 @@ class VansController < ApplicationController
   end
 
   def new
-    # authorize @van
+    @van = Van.new
+    authorize @van
   end
 
   def create

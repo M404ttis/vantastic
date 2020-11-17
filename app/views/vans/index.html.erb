@@ -14,7 +14,8 @@
 
   <% @vans.each do |van| %>
     <div>
-      <%= van.title %>
+      <h2><%= van.title %></h2>
+      <p></p>
       <%= van.description %>
       <%= van.brand %>
       <%= van.model %>
@@ -22,7 +23,7 @@
       <%= van.location %>
     </div>
     <div>
-      <img src="<%= van.photo %>" alt="">
+      <img src="<%= van.photo %>" alt="" style="height: 100px; width: 100px">
     </div>
   <% end %>
 
