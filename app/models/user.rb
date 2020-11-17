@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :vans
 
 
-  validates :username, presence: true, uniqueness: true, length: { in: 3..15 }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :username, presence: false#, uniqueness: false, length: { in: 3..15 }
+  validates :first_name, presence: false
+  validates :last_name, presence: false
 end
