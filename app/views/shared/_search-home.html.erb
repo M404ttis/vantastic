@@ -1,0 +1,9 @@
+
+  <%= form_tag vans_path, class: "search-container", method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control search-home inline-form",
+      placeholder: "Find a van"
+    %>
+    <%= submit_tag "Search", class: "btn btn-orange" %>
+  <% end %>

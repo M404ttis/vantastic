@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render 'shared/navbar-home' %>
+<div class="banner">
+  <div class="container">
+    <h1>Find or share a <strong>camper van</strong> for a short-trip or weekend getaway</h1>
+    <%= render 'shared/search-home' %>
+  </div>
+</div>
+<%= render 'shared/footer' %>
