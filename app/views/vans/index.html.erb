@@ -18,7 +18,7 @@
       <% if van.photo.attached? %>
       <%= cl_image_tag van.photo.key, crop: :fill %>
       <% else %>
-      <%= van.photo %>
+      <img src="<%= van.photo_url %>" alt="">
       <% end %>
       <div class="container-card">
         <div class="card-product-infos">
