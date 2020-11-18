@@ -1,11 +1,11 @@
 class VansController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:query].present?
       @vans = policy_scope(Van).where(location: params[:query]).order(created_at: :desc)
     else
-      @vans =  policy_scope(Van).order(created_at: :desc)
+      @vans = policy_scope(Van).order(created_at: :desc)
     end
   end
 
