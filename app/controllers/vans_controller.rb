@@ -3,11 +3,10 @@ class VansController < ApplicationController
 
   def index
     if params[:query].present?
-      @vans = Van.where(location: params[:query])
+      @vans = policy_scope(Van).where(location: params[:query]).order(created_at: :desc)
     else
-      @vans = Van.all
+      @vans =  policy_scope(Van).order(created_at: :desc)
     end
-    @vans = policy_scope(Van).order(created_at: :desc)
   end
 
   def new
