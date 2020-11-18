@@ -2,17 +2,32 @@
   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("https://images.unsplash.com/photo-1533745894801-062ca8abd594?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=926&q=80");
   background-size: cover;
   background-position: 25% 30%;
-  padding: 100px 0;
+  padding: 120px 0;
   height: 100vh;
-}
+  text-align: center;
 
-.banner h1 {
-  font-family: $headers-font;
-  font-weight: normal;
-  margin: 0;
-  color: white;
-  font-size: 42px;
-  font-weight: bold;
-  width: 600px;
-  text-shadow: 0 0 15px rgba(0,0,0,0.2);
+    h1 {
+      font-family: $headers-font;
+      font-weight: normal;
+      margin: 0;
+      color: white;
+      font-size: 42px;
+      font-weight: bold;
+      width: auto;
+      text-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-family: $headers-font;
+      font-weight: normal;
+      margin: 0;
+      color: white;
+      font-size: 30px;
+      font-weight: normal;
+      font-style: italic;
+      width: auto;
+      text-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+
 }
