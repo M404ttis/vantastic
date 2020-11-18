@@ -3,6 +3,8 @@ class Van < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true, uniqueness: true, length: { in: 3..30 }
+  validates :brand, presence: true
+  validates :model, presence: true
   validates :description, presence: true, length: { minimum: 20 }
   validates :photo, presence: true
   validates :location, presence: true
