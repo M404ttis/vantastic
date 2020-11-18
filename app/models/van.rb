@@ -1,6 +1,7 @@
 class Van < ApplicationRecord
   has_many :bookings
   belongs_to :user
+  has_one_attached :photo
 
   validates :title, presence: true, uniqueness: true, length: { in: 3..30 }
   validates :brand, presence: true

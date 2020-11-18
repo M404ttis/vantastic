@@ -15,7 +15,11 @@
 
   <% @vans.each do |van| %>
     <div class="card-product">
-      <img src="<%= van.photo %>" alt="">
+      <% if van.photo.attached? %>
+      <%= cl_image_tag van.photo.key, crop: :fill %>
+      <% else %>
+      <%= van.photo %>
+      <% end %>
       <div class="container-card">
         <div class="card-product-infos">
           <div class="row">
