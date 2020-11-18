@@ -24,8 +24,6 @@ class BookingPolicy < ApplicationPolicy
   def update?
     return true
     # record.user == user
-
-
   end
   
   def destroy?

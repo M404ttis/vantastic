@@ -30,7 +30,7 @@ pic_ids = ["https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=r
 pic_ids.each do |pic|
   faker_brand = Faker::Vehicle.make
   Van.create!(
-    title: Faker::Marketing.buzzwords,
+    title: Faker::Book.title,
     brand: faker_brand,
     model: Faker::Vehicle.model(make_of_model: faker_brand),
     description: Faker::Lorem.paragraphs(number: 1),
