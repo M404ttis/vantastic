@@ -1,40 +1,35 @@
-<%= render 'shared/navbar-home' %>
-
+<%= render 'shared/navbar' %>
+<br>
 <div class="container mt-5">
-  <div>
-    <img src="<%= @van.photo %>" alt="" height=300px >
+  <div class="profile-image">
+    <%= cl_image_tag @van.photo.key, :width=>1100, :height=>500, crop: :fill, style:"border-radius: 20px" %>
   </div>
-
-  <div>
-    <a class="btn btn-orange" href="/vans" role="button">All Vans</a>
+  <br>
+    <%= link_to 'Back', vans_path, class: 'btn btn-outline-dark' %>
+  <div style="margin-bottom: 50px">
     <h1><%= @van.title %></h1>
-    <h4><%= @van.brand %> <%= @van.model %></h4>
+    <h5><%= @van.brand %> <%= @van.model %></h5>
   </div>
 
-  <div class=d-inline-flex>
-    <div>
+<div class="d-inline-flex features" style="margin-bottom: 50px">
+    <div style="margin-right: 50px">
       <i class="fas fa-shower"></i>
       <p>has a shower</p>
     </div>
-    <div>
+    <div style="margin-right: 50px">
       <i class="fas fa-shuttle-van"></i>
       <p>5.99m long</p>
     </div>
-    <div>
+    <div style="margin-right: 50px">
       <i class="fas fa-bed"></i>
       <p>has 5 beds</p>
     </div>
   </div>
 
-
-  <div>
-    <h3>Camper Description</h3>
+  <div style="margin-bottom: 50px">
+    <h3>About this van</h3>
     <p><%= @van.description %></p>
   </div>
-
-
-
-
 
 </div>
 
@@ -46,8 +41,3 @@ Icons reinbasteln
 H2 Camper Description
 p vans.description
  -->
-
-
-
-<%= render 'shared/footer' %>
-
