@@ -2,7 +2,11 @@
 <br>
 <div class="container mt-5">
   <div class="profile-image">
+      <% if @van.photo.attached? %>
     <%= cl_image_tag @van.photo.key, :width=>1100, :height=>500, crop: :fill, style:"border-radius: 20px" %>
+      <% else %>
+      <img src="<%= @van.photo_url %>" alt="" width="1100" height="500" style="border-radius: 20px">
+      <% end %>
   </div>
   <br>
     <%= link_to 'Back', vans_path, class: 'btn btn-outline-dark' %>
