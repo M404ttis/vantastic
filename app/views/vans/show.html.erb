@@ -1,2 +1,53 @@
-<h1>Vans#show</h1>
-<p>Find me in app/views/vans/show.html.erb</p>
+<%= render 'shared/navbar-home' %>
+
+<div class="container mt-5">
+  <div>
+    <img src="<%= @van.photo %>" alt="" height=300px >
+  </div>
+
+  <div>
+    <a class="btn btn-orange" href="/vans" role="button">All Vans</a>
+    <h1><%= @van.title %></h1>
+    <h4><%= @van.brand %> <%= @van.model %></h4>
+  </div>
+
+  <div class=d-inline-flex>
+    <div>
+      <i class="fas fa-shower"></i>
+      <p>has a shower</p>
+    </div>
+    <div>
+      <i class="fas fa-shuttle-van"></i>
+      <p>5.99m long</p>
+    </div>
+    <div>
+      <i class="fas fa-bed"></i>
+      <p>has 5 beds</p>
+    </div>
+  </div>
+
+
+  <div>
+    <h3>Camper Description</h3>
+    <p><%= @van.description %></p>
+  </div>
+
+
+
+
+
+</div>
+
+<!-- pictures with rounded corners
+back to index btn
+H1 van.name
+H3 van.brand + van.model
+Icons reinbasteln
+H2 Camper Description
+p vans.description
+ -->
+
+
+
+<%= render 'shared/footer' %>
+
