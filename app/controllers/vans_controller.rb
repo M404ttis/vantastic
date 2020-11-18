@@ -1,8 +1,9 @@
 class VansController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+
   def index
     if params[:query].present?
-    @vans = Van.where(location: params[:query])
+      @vans = Van.where(location: params[:query])
     else
       @vans = Van.all
     end
@@ -15,7 +16,15 @@ class VansController < ApplicationController
   end
 
   def create
-    # authorize @van
+    @van = Van.new(set_params)
+    @van.user = current_user
+    @van.save
+    if @van.save
+      redirect_to van_path(@van)
+    else
+      render :new
+    end
+    authorize @van
   end
 
   def update
@@ -33,5 +42,11 @@ class VansController < ApplicationController
   def show
     @van = Van.find(params[:id])
     authorize @van
+  end
+
+  private
+
+  def set_params
+    params.require(:van).permit(:title, :brand, :model, :description, :photo, :price_per_day, :location)
   end
 end

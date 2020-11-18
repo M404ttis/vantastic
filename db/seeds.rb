@@ -37,7 +37,7 @@ pic_ids.each do |pic|
     location: ["Berlin", "Essen", "München", "Hamburg", "Düsseldorf", "Freiburg", "Leipzig", "Frankfurt" ].sample,
     price_per_day: rand(20..1000),
     user: User.all.sample,
-    photo: pic,
+    photo_url: pic,
     )
 end
 
