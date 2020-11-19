@@ -41,6 +41,12 @@
     <% end %>
   </div>
 
+  <div>
+    <% if policy(@van).edit? %>
+      <%= link_to "change your offer", edit_van_path(@van), class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
+
 </div>
 <%= simple_form_for [@van, @booking] do |f| %>
 <%=   f.input :start_date  %>
