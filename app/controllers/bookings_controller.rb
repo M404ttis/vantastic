@@ -6,10 +6,6 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
