@@ -38,7 +38,10 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    # authorize @booking
+    @booking = Booking.where(user: current_user)
+    authorize @booking
+    @booking.delete
+    redirect_to bookings_path
   end
 
   private
