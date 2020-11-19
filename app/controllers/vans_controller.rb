@@ -27,11 +27,19 @@ class VansController < ApplicationController
   end
 
   def update
-    # authorize @van
+    @van = Van.find(params[:id])
+    @van.update(set_params)
+    if @van.save
+      redirect_to van_path(@van)
+    else
+      render :edit
+    end
+    authorize @van
   end
-
+  
   def edit
-    # authorize @van
+    @van = Van.find(params[:id])
+    authorize @van
   end
 
   def destroy
