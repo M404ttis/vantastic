@@ -1,5 +1,7 @@
 class VansController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+  # geocoded_by :location
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   def index
     if params[:query].present?
@@ -36,7 +38,7 @@ class VansController < ApplicationController
     end
     authorize @van
   end
-  
+
   def edit
     @van = Van.find(params[:id])
     authorize @van
@@ -54,6 +56,13 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @booking = Booking.new
     authorize @van
+
+    @markers = [
+      {
+        lat: @van.latitude,
+        lng: @van.longitude
+      }
+    ]
   end
 
   private
