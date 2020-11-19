@@ -1,7 +1,15 @@
 class BookingsController < ApplicationController
 
+  def index
+    @bookings = policy_scope(Booking).where(user: current_user).order(created_at: :desc)
+    # @bookings = Booking.where(user: current_user)
+    authorize @bookings
+  end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
@@ -11,8 +19,18 @@ class BookingsController < ApplicationController
     # authorize @booking
   end
 
-  def create
-    # authorize @booking
+  def create # rubocop:disable Metrics/MethodLength
+    @booking = Booking.new(set_params)
+    @van = Van.find(params[:van_id])
+    @booking.van = @van
+    @booking.user = current_user
+    @booking.save
+    if @booking.save
+      redirect_to root_path
+    else
+      render :new
+    end
+    authorize @booking
   end
 
   def edit
@@ -25,5 +43,11 @@ class BookingsController < ApplicationController
 
   def destroy
     # authorize @booking
+  end
+
+  private
+
+  def set_params
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end

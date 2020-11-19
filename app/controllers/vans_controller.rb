@@ -1,5 +1,5 @@
 class VansController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     if params[:query].present?
@@ -40,6 +40,7 @@ class VansController < ApplicationController
 
   def show
     @van = Van.find(params[:id])
+    @booking = Booking.new
     authorize @van
   end
 

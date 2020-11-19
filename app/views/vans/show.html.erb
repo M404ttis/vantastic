@@ -36,12 +36,8 @@
   </div>
 
 </div>
-
-<!-- pictures with rounded corners
-back to index btn
-H1 van.name
-H3 van.brand + van.model
-Icons reinbasteln
-H2 Camper Description
-p vans.description
- -->
+<%= simple_form_for [@van, @booking] do |f| %>
+<%=   f.input :start_date  %>
+<%=   f.input :end_date %>
+<%=   f.submit 'Create Booking' %>
+<% end %>
