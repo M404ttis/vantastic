@@ -21,6 +21,10 @@ class BookingPolicy < ApplicationPolicy
     return true
   end
 
+  def my_offers?
+    return true
+  end
+
   def edit?
     record.user == user
   end
@@ -32,6 +36,4 @@ class BookingPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
-
-
 end

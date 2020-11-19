@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = policy_scope(Booking).where(user: current_user).order(created_at: :desc)
     # @bookings = Booking.where(user: current_user)
@@ -15,12 +14,17 @@ class BookingsController < ApplicationController
     # authorize @booking
   end
 
-  def create # rubocop:disable Metrics/MethodLength
+  def my_offers
+    @user = current_user
+    @offers = @user.offers
+    authorize @offers
+  end
+
+  def create
     @booking = Booking.new(set_params)
     @van = Van.find(params[:van_id])
     @booking.van = @van
     @booking.user = current_user
-    @booking.save
     if @booking.save
       redirect_to bookings_path
     else

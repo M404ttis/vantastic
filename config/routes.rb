@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :vans do
-    resources :bookings, only: %i[create show]
+    resources :bookings, only: %i[create]
   end
-    resources :bookings, only: [:index, :edit, :update, :destroy]
+    resources :bookings, only: [:index, :show, :edit, :update, :destroy] do
+      collection do
+        get :my_offers
+      end
+    end
 end
