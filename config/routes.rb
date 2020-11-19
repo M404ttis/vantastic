@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :vans do
     resources :bookings, only: %i[create]
   end
-    resources :bookings, only: [:index, :show, :edit, :update, :destroy]
+    resources :bookings, only: [:index, :show, :edit, :update, :destroy] do
+      collection do
+        get :my_offers
+      end
+    end
 end

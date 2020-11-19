@@ -1,0 +1,31 @@
+<%= render 'shared/navbar' %>
+  <div class="container mt-5">
+    <h2>My Offers</h2>
+    <p>When did people book your vehicle? Keep track here and accept or decline a booking.</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">E-Mail</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Confirmed?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offers.each do |offer| %>
+        <tr>
+          <td><%= offer.van.title %></td>
+          <td><%= offer.user.first_name %></td>
+          <td><%= offer.user.last_name %></td>
+          <td><%= offer.user.email %></td>
+          <td><%= offer.start_date %></td>
+          <td><%= offer.end_date %></td>
+          <td><%= offer.confirmed %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
