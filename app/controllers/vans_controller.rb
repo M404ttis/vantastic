@@ -35,7 +35,11 @@ class VansController < ApplicationController
   end
 
   def destroy
-    # authorize @van
+    @van = Van.find(params[:id])
+    @van.user = current_user
+    authorize @van
+    @van.delete
+    redirect_to vans_path
   end
 
   def show

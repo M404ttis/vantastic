@@ -35,6 +35,12 @@
     <p><%= @van.description %></p>
   </div>
 
+  <div>
+    <% if policy(@van).destroy? %>
+      <%= link_to "delete van", van_path(@van), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-outline-dark" %>
+    <% end %>
+  </div>
+
 </div>
 
 <!-- pictures with rounded corners
