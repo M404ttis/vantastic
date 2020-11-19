@@ -1,6 +1,11 @@
+<%= render 'shared/navbar' %>
+<br><br>
 <div class="container mt-5">
-  <h1>My booked Vans</h1>
-  <%= link_to "Back", root_path, class: 'create btn btn-warning' %>
+  <%= link_to "Back", root_path, class: 'create btn btn-outline-dark', style: "border-radius: 50px" %>
+  <div class="container mt-5">
+    <h4>My booked Vans</h4>
+    <p>Check out your upcoming bookings.</p>
+  </div>
   <% @bookings.each do |booking| %>
     <div class="card-product">
       <% if booking.van.photo.attached? %>
@@ -30,15 +35,17 @@
           <div class="row loc">
             <p><%= booking.van.location %></p>
           </div>
-          <div>
-            <% if policy(booking).destroy? %>
-              <%= link_to "delete booking", booking_path(booking), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-outline-dark" %>
-            <% end %>
-          <div>
-            <% if policy(booking).edit? %>
-              <%= link_to "edit booking", edit_booking_path(booking), class: "btn btn-outline-dark" %>
-            <% end %>
-          </div>
+          <div class="buttons">
+            <div>
+              <% if policy(booking).edit? %>
+                <%= link_to "edit booking", edit_booking_path(booking), class: "btn btn-success", style: "border-radius: 50px; margin-right: 10px" %>
+              <% end %>
+            </div>
+            <div>
+              <% if policy(booking).destroy? %>
+                <%= link_to "delete booking", booking_path(booking), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-danger", style: "border-radius: 50px; margin-right: 10px" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

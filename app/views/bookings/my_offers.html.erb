@@ -1,31 +1,36 @@
 <%= render 'shared/navbar' %>
-  <div class="container mt-5">
-    <h2>My Offers</h2>
-    <p>When did people book your vehicle? Keep track here and accept or decline a booking.</p>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">E-Mail</th>
-          <th scope="col">Start Date</th>
-          <th scope="col">End Date</th>
-          <th scope="col">Confirmed?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @offers.each do |offer| %>
-        <tr>
-          <td><%= offer.van.title %></td>
-          <td><%= offer.user.first_name %></td>
-          <td><%= offer.user.last_name %></td>
-          <td><%= offer.user.email %></td>
-          <td><%= offer.start_date %></td>
-          <td><%= offer.end_date %></td>
-          <td><%= offer.confirmed %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<br><br>
+<div class="container mt-5 mb-5">
+  <div class="container">
+    <h4>My Offers</h4>
+    <p>Keep track of your offered vans and accept or decline a booking.</p>
   </div>
+  <div class="container">
+    <div class="row">
+      <% if @offers.nil?%>
+        <div class="container mt-5">
+          <p><i>Nothing to display here. You are currently not offering a van for rent or nobody has booked it.</i></p>
+        </div>
+      <% else %>
+       <% @offers.each do |offer| %>
+          <div class="card" style="width: 18rem">
+              <%= cl_image_tag offer.van.photo.key, crop: :fill, class: "card-img-top" %>
+            <div class="card-body">
+              <% if offer.confirmed %>
+                <p class="card-text status-green" style="border-radius: 50px">Confirmed</p>
+              <% else %>
+                <p class="card-text status-red" style="border-radius: 50px">Not confirmed</p>
+              <% end %>
+                <h5><%= link_to offer.van.title, van_path(offer.van) %></h5>
+                <p class="card-text"><%= offer.user.first_name %> <%= offer.user.last_name %></p>
+                <p class="card-text"><%= offer.user.email %></p>
+                <p class="card-text"><%= offer.start_date %> – <%= offer.end_date %></p>
+                <a href="#" class="btn btn-success" style="color: white; border-radius: 50px">Accept</a>
+                <a href="#" class="btn btn-danger" style="border-radius: 50px">Decline</a>
+            </div>
+          </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

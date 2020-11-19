@@ -19,3 +19,8 @@ h5 {
 p {
   color: $midgrey;
 }
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+}

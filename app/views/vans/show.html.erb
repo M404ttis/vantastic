@@ -8,8 +8,19 @@
       <img src="<%= @van.photo_url %>" alt="" width="1100" height="500" style="border-radius: 20px">
       <% end %>
   </div>
-  <br>
-    <%= link_to 'Back', vans_path, class: 'btn btn-outline-dark' %>
+    <div class="container mt-5 buttons">
+      <%= link_to 'Back', vans_path, class: 'btn btn-outline-dark', style: "margin-right: 10px; border-radius: 50px" %>
+      <div>
+        <% if policy(@van).edit? %>
+          <%= link_to "change your offer", edit_van_path(@van), class: "btn btn-outline-dark", style: "margin-right: 10px; border-radius: 50px" %>
+        <% end %>
+      </div>
+      <div>
+        <% if policy(@van).destroy? %>
+          <%= link_to "delete van", van_path(@van), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-outline-danger", style: "margin-right: 10px; border-radius: 50px" %>
+        <% end %>
+      </div>
+    </div>
   <div style="margin-bottom: 50px">
     <h1><%= @van.title %></h1>
     <h5><%= @van.brand %> <%= @van.model %></h5>
@@ -35,40 +46,18 @@
     <p><%= @van.description %></p>
   </div>
 
-  <div>
-    <% if policy(@van).destroy? %>
-      <%= link_to "delete van", van_path(@van), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-outline-dark" %>
-    <% end %>
-  </div>
-
-  <div>
-    <% if policy(@van).edit? %>
-      <%= link_to "change your offer", edit_van_path(@van), class: "btn btn-outline-dark" %>
-    <% end %>
-  </div>
-
 </div>
+
+<div class="container mt-5">
 <%= simple_form_for [@van, @booking] do |f| %>
 <%=   f.input :start_date  %>
 <%=   f.input :end_date %>
-<%=   f.submit 'Create Booking' %>
+<%=   f.submit 'Create Booking', class: "btn btn-warning", style: "border-radius: 50px" %>
 <% end %>
+</div>
 
-<div id="map"
+<div class="container mt-5 mb-5" id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
