@@ -1,14 +1,14 @@
 <div class="container mt-5">
   <h1>Offer your Van to Fellow Travelers</h1>
   <%= simple_form_for(@van) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :brand %>
-  <%= f.input :model %>
-  <%= f.input :description %>
-  <%= f.input :price_per_day %>
-  <%= f.input :location %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit 'Create van', class: 'create btn btn-warning' %>
-  <%= link_to 'Back Home', root_path, class: 'btn btn-outline-dark' %>
+    <%= f.input :title %>
+    <%= f.input :brand %>
+    <%= f.input :model %>
+    <%= f.input :description %>
+    <%= f.input :price_per_day %>
+    <%= f.input :location %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit 'Create van', class: 'create btn btn-warning' %>
+    <%= link_to 'Back Home', root_path, class: 'btn btn-outline-dark' %>
   <% end %>
 </div>
