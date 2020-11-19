@@ -1,5 +1,16 @@
 class BookingsController < ApplicationController
+
+  def index
+    @bookings = policy_scope(Booking).where(user: current_user).order(created_at: :desc)
+    # @bookings = Booking.where(user: current_user)
+    authorize @bookings
+  end
+
   def show
+    # authorize @booking
+  end
+
+  def new
     # authorize @booking
   end
 
