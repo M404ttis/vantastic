@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :vans do
     resources :bookings, only: %i[create]
   end
-    resources :booking, only: %i[show edit update destroy]
+    resources :bookings, only: [:index, :show, :edit, :update, :destroy]
 end
