@@ -21,6 +21,10 @@ class BookingPolicy < ApplicationPolicy
     return true
   end
 
+  def my_offers?
+    return true
+  end
+
   def edit?
     return true
   end
@@ -34,6 +38,4 @@ class BookingPolicy < ApplicationPolicy
     return true
     # record.user == user
   end
-
-
 end
