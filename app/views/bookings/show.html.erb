@@ -1,2 +1,14 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<%= render 'shared/navbar' %>
+<br>
+<br>
+<h1>This is your booking</h1>
+<div class="container mt-5">
+  <div class="profile-image">
+      <% if @booking.van.photo.attached? %>
+    <%= cl_image_tag @van.photo.key, :width=>400, :height=>400, crop: :fill, style:"border-radius: 20px" %>
+      <% else %>
+      <img src="<%= @booking.van.photo_url %>" alt="" width="400" height="400" style="border-radius: 20px">
+      <% end %>
+  </div>
+  <br>
+    <%= link_to 'see all bookings', bookings_path, class: 'btn btn-outline-dark' %>
