@@ -31,12 +31,12 @@
             <p><%= booking.van.location %></p>
           </div>
           <div>
-            <% if policy(@booking).destroy? %>
+            <% if policy(booking).destroy? %>
               <%= link_to "delete booking", booking_path(booking), method: :delete, data: {confirm: 'Are you sure you want to delete?'}, class: "btn btn-outline-dark" %>
             <% end %>
           <div>
-            <% if policy(@booking).edit? %>
-              <%= link_to "edit booking", edit_booking_path(@booking), class: "btn btn-outline-dark" %>
+            <% if policy(booking).edit? %>
+              <%= link_to "edit booking", edit_booking_path(booking), class: "btn btn-outline-dark" %>
             <% end %>
           </div>
           </div>
