@@ -36,6 +36,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'faker'
 gem 'devise'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
