@@ -11,4 +11,5 @@ Rails.application.routes.draw do
         get :my_offers
       end
     end
+  patch '/confirm', to: "bookings#confirm"
 end
