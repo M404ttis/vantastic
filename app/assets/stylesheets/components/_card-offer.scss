@@ -1,0 +1,27 @@
+// .card-img-top {
+//     width: 100%;
+//     height: 15vw;
+//     object-fit: cover;
+// }
+
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+
+.status-green {
+  display: table;
+  padding: 3px 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: $green;
+  background-color: $light-gray;
+}
+
+.status-red {
+  display: table;
+  padding: 3px 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: $red;
+  background-color: $light-gray;
+}
