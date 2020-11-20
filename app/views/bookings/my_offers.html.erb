@@ -7,9 +7,10 @@
   </div>
   <div class="container">
     <div class="row">
-      <% if @offers.nil?%>
-        <div class="container mt-5">
+      <% if @offers.empty?%>
+        <div class="container mt-5 notification">
           <p>Nothing to display here. You are currently not offering a van for rent or nobody has booked it.</p>
+          <a class="btn btn-ghost" href="/vans/new">Offer My Van</a>
         </div>
       <% else %>
        <% @offers.each do |offer| %>
