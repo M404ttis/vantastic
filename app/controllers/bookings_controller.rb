@@ -20,6 +20,18 @@ class BookingsController < ApplicationController
     authorize @offers
   end
 
+  def confirm
+    @booking = Booking.find(params[:booking_id])
+    if params[:status] == "Accepted"
+      @booking.status = "Accepted"
+    elsif params[:status] == "Declined"
+        @booking.status = "Declined"      
+    end
+    @booking.save
+    redirect_to my_offers_bookings_path
+    authorize @booking
+  end
+
   def create
     @booking = Booking.new(set_params)
     @van = Van.find(params[:van_id])
