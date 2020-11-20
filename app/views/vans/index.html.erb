@@ -26,8 +26,8 @@
           </div>
         </div>
           <div class="col-right">
-            <p><%= van.price_per_day %> €/per day</p>
-            <%= link_to 'Continue', van_path(van.id), class: 'create btn btn-warning', style: "border-radius: 50px"  %>
+            <p><%= van.price_per_day %>€</p><p style="margin-top: 0; font-size:16px;">per day</p>
+            <%= link_to 'Continue', van_path(van.id), class: 'create btn btn-warning', style: "margin-top: 8px; border-radius: 50px"  %>
           </div>
       </div>
     </div>
