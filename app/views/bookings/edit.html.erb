@@ -1,10 +1,17 @@
-<h1>Bookings#edit</h1>
-<p>Find me in app/views/bookings/edit.html.erb</p>
+<%= render 'shared/navbar' %>
+<br><br>
 
+<div class="container mt-5">
+    <h1>Plans changed? No problem - change your bookings here!</h1>
+
+    <%= simple_form_for [@van, @booking] do |f| %>
+    <%=   f.input :start_date  %>
+    <%=   f.input :end_date %>
+    <%=   f.submit 'Update Booking', class: "btn btn-warning", style: "border-radius: 50px" %>
+    <% end %>
+
+    <div class="mt-5" >
+        <%= link_to 'Back Home', root_path, class: 'btn btn-outline-dark', style: "margin-right: 10px; margin-bottom: 50px; border-radius: 50px" %>
+    </div>
 
 </div>
-<%= simple_form_for [@van, @booking] do |f| %>
-<%=   f.input :start_date  %>
-<%=   f.input :end_date %>
-<%=   f.submit 'Create Booking' %>
-<% end %>
