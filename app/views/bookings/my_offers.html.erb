@@ -6,14 +6,14 @@
     <p>Keep track of your offered vans and accept or decline a booking.</p>
   </div>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-between">
       <% if @offers.nil?%>
         <div class="container mt-5">
           <p><i>Nothing to display here. You are currently not offering a van for rent or nobody has booked it.</i></p>
         </div>
       <% else %>
        <% @offers.each do |offer| %>
-          <div class="card" style="width: 18rem">
+          <div class="card  mb-4" style="width: 18rem; border-radius: 7px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2)">
               <%= cl_image_tag offer.van.photo.key, crop: :fill, class: "card-img-top" %>
             <div class="card-body">
               <% if offer.confirmed %>
@@ -25,8 +25,8 @@
                 <p class="card-text"><%= offer.user.first_name %> <%= offer.user.last_name %></p>
                 <p class="card-text"><%= offer.user.email %></p>
                 <p class="card-text"><%= offer.start_date %> – <%= offer.end_date %></p>
-                <a href="#" class="btn btn-success" style="color: white; border-radius: 50px">Accept</a>
-                <a href="#" class="btn btn-danger" style="border-radius: 50px">Decline</a>
+                <a href="#" class="btn btn-secondary" style="color: white; border-radius: 50px">Accept</a>
+                <a href="#" class="btn btn-secondary" style="border-radius: 50px">Decline</a>
             </div>
           </div>
             <% end %>
