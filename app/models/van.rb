@@ -1,5 +1,5 @@
 class Van < ApplicationRecord
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   belongs_to :user
   has_one_attached :photo
   geocoded_by :location
@@ -12,4 +12,11 @@ class Van < ApplicationRecord
   # validates :photo, presence: true
   validates :location, presence: true
   validates :price_per_day, presence: true, numericality: { only_integer: true }, inclusion: { in: 20..1000 }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_location,
+    against: [ :location ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
