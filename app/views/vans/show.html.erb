@@ -1,13 +1,54 @@
 <%= render 'shared/navbar' %>
 <br>
+<br>
 <div class="container mt-5">
-  <div class="profile-image">
-      <% if @van.photo.attached? %>
-    <%= cl_image_tag @van.photo.key, :width=>1100, :height=>500, crop: :fill, style:"border-radius: 20px" %>
-      <% else %>
-      <img src="<%= @van.photo_url %>" alt="" width="1100" height="500" style="border-radius: 20px">
-      <% end %>
+
+  <div style="margin-bottom: 50px">
+    <h1><%= @van.title %></h1>
+    <h5><%= @van.brand %> <%= @van.model %></h5>
   </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="profile-image">
+          <% if @van.photo.attached? %>
+        <%= cl_image_tag @van.photo.key, :width=>500, :height=>400, crop: :fill, style:"border-radius: 20px" %>
+          <% else %>
+          <img src="<%= @van.photo_url %>" alt="" width="500" height="400" style="border-radius: 20px">
+          <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div id="map"
+          style="width: 100%; height: 400px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2 align-items-center">
+      <div class="col-6">
+        <div style="margin-bottom: 50px">
+          <h3>About this van</h3>
+          <p><%= @van.description %></p>
+        </div>
+      </div>
+
+    <div class="col-6">
+        <div class="container mt-5 border p-3 rounded">
+          <%= simple_form_for [@van, @booking] do |f| %>
+          <%=   f.input :start_date  %>
+          <%=   f.input :end_date %>
+          <p> <%= @van.price_per_day%> € per day</p>
+          <%=   f.submit 'Create Booking', class: "btn btn-warning", style: "border-radius: 50px" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+  <div class="row mb-4">
     <div class="container mt-5 buttons">
       <%= link_to 'Back', vans_path, class: 'btn btn-outline-dark', style: "margin-right: 10px; border-radius: 50px" %>
       <div>
@@ -21,43 +62,5 @@
         <% end %>
       </div>
     </div>
-  <div style="margin-bottom: 50px">
-    <h1><%= @van.title %></h1>
-    <h5><%= @van.brand %> <%= @van.model %></h5>
   </div>
-
-<div class="d-inline-flex features" style="margin-bottom: 50px">
-    <div style="margin-right: 50px">
-      <i class="fas fa-shower"></i>
-      <p>has a shower</p>
-    </div>
-    <div style="margin-right: 50px">
-      <i class="fas fa-shuttle-van"></i>
-      <p>5.99m long</p>
-    </div>
-    <div style="margin-right: 50px">
-      <i class="fas fa-bed"></i>
-      <p>has 5 beds</p>
-    </div>
-  </div>
-
-  <div style="margin-bottom: 50px">
-    <h3>About this van</h3>
-    <p><%= @van.description %></p>
-  </div>
-
-</div>
-
-<div class="container mt-5">
-<%= simple_form_for [@van, @booking] do |f| %>
-<%=   f.input :start_date  %>
-<%=   f.input :end_date %>
-<%=   f.submit 'Create Booking', class: "btn btn-warning", style: "border-radius: 50px" %>
-<% end %>
-</div>
-
-<div class="container mt-5 mb-5" id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
