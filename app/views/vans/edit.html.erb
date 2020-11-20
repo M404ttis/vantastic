@@ -1,6 +1,9 @@
+<%= render 'shared/navbar' %>
+<br><br>
 
 <div class="container mt-5">
-  <h1>Change your van settings and make it even more appealing! </h1>
+  <h1>Change your Van Details</h1>
+  <p>... and make your offer even more appealing!</p>
   <%= simple_form_for(@van) do |f| %>
     <%= f.input :title %>
     <%= f.input :brand %>
@@ -9,7 +12,7 @@
     <%= f.input :price_per_day %>
     <%= f.input :location %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit 'Update', class: 'create btn btn-warning' %>
-    <%= link_to 'Back Home', root_path, class: 'btn btn-outline-dark' %>
+    <%= f.submit 'Update', class: 'create btn btn-warning', style: "margin-right: 10px; margin-bottom: 50px; border-radius: 50px" %>
+    <%= link_to 'Back Home', root_path, class: 'btn btn-outline-dark', style: "margin-right: 10px; margin-bottom: 50px; border-radius: 50px" %>
   <% end %>
 </div>
