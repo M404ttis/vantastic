@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'csv'
 
 Van.destroy_all
 User.destroy_all
@@ -29,12 +30,17 @@ puts "Start seeding van..."
 pic_ids = ["https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80", "https://images.unsplash.com/photo-1502113040754-9e3e85618a00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=1050&q=80", "https://images.unsplash.com/photo-1520101244246-293f77ffc39e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80", "https://images.unsplash.com/photo-1531247370505-ce9e32a056a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80", "https://images.unsplash.com/photo-1489307229055-9d55422662bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80", "https://images.unsplash.com/photo-1592639297419-e539eb5d6d13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"]
 pic_ids.each do |pic|
   faker_brand = Faker::Vehicle.make
+  filepath = Rails.root.join('db', 'german_cities.csv')
+  csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+  cities = CSV.foreach(filepath, csv_options) do |row|
+    puts "#{row['city']}"
+    end
   Van.create!(
     title: Faker::Book.title,
     brand: faker_brand,
     model: Faker::Vehicle.model(make_of_model: faker_brand),
     description: Faker::Lorem.paragraphs(number: 1),
-    location: ["Berlin", "Essen", "München", "Hamburg", "Düsseldorf", "Freiburg", "Leipzig", "Frankfurt" ].sample,
+    location: cities,
     price_per_day: rand(20..1000),
     user: User.all.sample,
     photo_url: pic,
