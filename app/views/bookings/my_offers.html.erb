@@ -17,7 +17,7 @@
               <%= cl_image_tag offer.van.photo.key, crop: :fill, class: "card-img-top" %>
             <div class="card-body">
               <% if offer.status == "Accepted"%>
-                <p class="card-text status-green" style="border-radius: 50px">Confirmed</p>
+                <p class="card-text status-green" style="border-radius: 50px">Accepted</p>
               <% elsif offer.status == "Declined"%>
                 <p class="card-text status-red" style="border-radius: 50px">Declined</p>
               <% else %>
